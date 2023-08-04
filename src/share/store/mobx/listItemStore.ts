@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 import { makeAutoObservable } from "mobx";
-import TestModel from "../model/testModel";
+import TestModel from "@/share/model/testModel";
 
 class ListItemStore {
   model: TestModel | null = null;

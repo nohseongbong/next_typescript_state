@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import TestModel from "../model/testModel";
+import TestModel from "../../model/testModel";
 
 class AppStore {
   text: string = "123";
