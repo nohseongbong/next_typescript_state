@@ -1,4 +1,4 @@
-import { listItemStore } from "@/share/store/listItemStore";
+import { listItemStore } from "@/share/store/mobx/listItemStore";
 import { runInAction } from "mobx";
 import { observer } from "mobx-react-lite";
 
