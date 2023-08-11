@@ -1,6 +1,6 @@
 import { runInAction } from "mobx";
 import { useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { observer } from "mobx-react-lite";
 import Link from "next/link";
 
@@ -18,17 +18,43 @@ const Home = observer(() => {
     });
   };
 
+  const { data, isLoading, mutate, mutateAsync } = useMutation(getUsers, {
+    onMutate: () => {
+      console.log("onMitate");
+    },
+    onSettled: () => {
+      console.log("onSettled");
+    },
+    onSuccess() {
+      console.log(data, "onSuccess : data");
+      console.log(isLoading, "isLoading");
+      console.log(mutateAsync, "mutateAsync");
+    },
+    onError() {
+      console.log("onError");
+    },
+  });
+
   useEffect(() => {
-    console.log(query, ": query");
-  }, [query]);
+    mutate();
+  }, []);
 
   return (
     <div style={{ flexDirection: "column", display: "flex" }}>
       <span style={{ margin: 10 }}>first page</span>
       <Link href={"/main"}>main 이동</Link>
       <Link href={"/about"}>about 이동</Link>
+      <Link href={"/counter"}>counter 이동</Link>
       <button onClick={onClickButton}>버튼</button>
-      {appStore.text}
+      {query.data?.users.map((item) => {
+        return (
+          <div style={{ display: "flex", flexDirection: "column", margin: "10px 0" }} key={item.userId}>
+            <span>{item.username}</span>
+            <span>{item.email}</span>
+            <span>{item.birthdate.toString()}</span>
+          </div>
+        );
+      })}
     </div>
   );
 });
