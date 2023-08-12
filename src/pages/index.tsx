@@ -4,9 +4,9 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { observer } from "mobx-react-lite";
 import Link from "next/link";
 
-import TestModel from "@/share/model/testModel";
-import { appStore } from "@/share/store/mobx/appStore";
 import { getUsers } from "@/apis/user/user";
+import { appStore } from "@/store/mobx/appStore";
+import TestModel from "@/model/testModel";
 
 const Home = observer(() => {
   const query = useQuery({ queryKey: ["users"], queryFn: getUsers });

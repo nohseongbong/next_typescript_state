@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiUrl } from "@/share/libs/common";
+import { apiUrl } from "@/libs/common";
 
 export const axiosInstance = axios.create({
   baseURL: `${apiUrl}`,
