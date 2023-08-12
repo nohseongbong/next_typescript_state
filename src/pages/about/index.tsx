@@ -1,11 +1,7 @@
-import { observer } from "mobx-react-lite";
+import AboutContainer from "@/components/about/AboutContainer";
 
-const About = observer(() => {
-  return (
-    <div>
-      <span>About page</span>
-    </div>
-  );
-});
+const About = () => {
+  return <AboutContainer />;
+};
 
 export default About;
