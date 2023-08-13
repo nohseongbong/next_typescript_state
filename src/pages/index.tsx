@@ -13,7 +13,6 @@ const Home = observer(() => {
 
   const onClickButton = () => {
     runInAction(() => {
-      appStore.text = "1234567";
       appStore.list.push(new TestModel({ text: `${appStore.text}${Math.random().toString()}` }));
     });
   };
